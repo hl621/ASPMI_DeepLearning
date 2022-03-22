@@ -140,7 +140,7 @@ def plot_learning_curves(loss):
         plt.subplot(gs[i])
         for k in range (1,20001):
             result1[k-1]=l[0][k-1].detach().numpy()
-            result2[k-1]=l[0][k-1].detach().numpy()
+            result2[k-1]=l[1][k-1].detach().numpy()
         plt.plot(result1)
         plt.plot(result2)
         plt.legend(['Train Loss', 'Test Loss'])
