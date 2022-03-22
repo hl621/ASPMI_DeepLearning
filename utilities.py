@@ -134,11 +134,15 @@ def train_models(X, y, models, epochs=100, learning_rate=1e-2):
 def plot_learning_curves(loss):
     plt.figure(figsize=(12,4))
     gs = gridspec.GridSpec(1, 3) 
-
+    result1=np.zeros((20000))
+    result2=np.zeros((20000))
     for i, l in enumerate(loss):
         plt.subplot(gs[i])
-        plt.plot(l[0])
-        plt.plot(l[1])
+        for k in range (1,20001):
+            result1[k-1]=l[0][k-1].detach().numpy()
+            result2[k-1]=l[0][k-1].detach().numpy()
+        plt.plot(result1)
+        plt.plot(result2)
         plt.legend(['Train Loss', 'Test Loss'])
 
     plt.tight_layout()
